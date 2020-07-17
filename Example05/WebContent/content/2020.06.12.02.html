@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function pigsave(pid,ppw){
+		this.pid=pid; this.ppw=ppw
+		var totalMoney=0;
+		this.save=function(money){};
+		this. getTotalMoney=function(){return totalMoney;}//토탈 금액확인
+		this. setSaveMoney=function(money){totalMoney+=money}//저축
+		this. setFetchMoney=function(money,id,pw){
+			if(id==this.pid && pw==this.ppw){
+				if(money>totalMoney){
+					alert("잔액이 부족합니다.");
+					return;
+				}
+				totalMoney-=money
+			}else{
+				alert("사용자 인증에 실패");
+			}
+		};//인출
+	}
+	var psObj1 = new pigsave('틸다','12345');
+	var psObj2 = new pigsave('민기','12345');
+	psObj1.setSaveMoney(5000);
+	psObj2.setSaveMoney(10000);
+	psObj1.setFetchMoney(3000,"틸다","12345");
+	psObj2.setFetchMoney(6000,"민기","12345");
+	//psObj1.totalMoney=500;
+	//psObj2.totalMoney=1000;
+	//psObj1.totalMoney=10000;
+	console.log(psObj1.getTotalMoney());
+	console.log(psObj2.getTotalMoney());
+	console.log(psObj1.totalMoney);
+	
+	function ObjTest(){ //지역 변수로 선언되면 객체로 접근 할수 없다.
+		var a=100;
+		this.getA=function(){return a} //뭐가 들었는지 알수없음
+		this.setA=function(val){a=val}// a=100을 읽을수 없음
+	}
+	var obj = new ObjTest();
+	console.log(obj.a);
+	obj.setA(1000);
+	console.log(obj.getA());
+</script>
+</head>
+<body>
+
+</body>
+</html>

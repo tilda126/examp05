@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+</body>
+<script> //document는 html문서를 가지고 있다.
+var userInput = prompt("출력할 구구단의 단을 입력하세요 예제","3-5");
+var chk = userInput.indexOf('-');
+var userArr=[];//배열만들기
+if(chk<=-1){ //-기호가 없을때,1개의 경우의 수(한개의 값만 입력하는 경우)
+	console.log("진입")
+	userArr[0]=userInput; 
+	userArr[1]= userInput;
+}else{//-기호가 있을때
+	userArr = userInput.split("-");
+}
+
+var body=document.getElementsByTagName('body')[0]; //배열 주소를 기억하고있는 있는 변수 ,접근할수 있는 주소를 body를 저장
+var inHtml="";//화면을 공백으로 만든다.
+	for(var i=userArr[0];i<=userArr[1];i++){
+		var subHtml="";
+		for(var j=1;j<=9;j++){
+			subHtml+= i+"*"+j+"="+(i*j)+"<br>";
+		}
+		inHtml+="<div style='text-align:right;float:left; border:5px solid black'>"+subHtml+"</div>";
+	}
+	console.log(inHtml);
+	body.innerHTML=inHtml;
+</script>
+</html>

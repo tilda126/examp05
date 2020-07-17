@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var obj = {};  //var arr[];
+	obj.a="abc";
+	obj["b"]="bcd";
+	var c = "c";
+	obj[c]="cde"; //obj.c
+	console.log(obj)
+	
+	var obj1 = new Object(); //var arr = new Array();
+	obj1.a="aaa";
+	obj1.b="bbb";
+	obj1["c"]="ccc";
+	console.log(obj1);
+	var obj2={a:"aaa", "b":"bbb", c:"ccc"}; //var arr=[0,1,2]
+	
+	var testObj={aaa:"ccc","bbb":"ddd", eee:"ffff"};
+	var txt = "eee";
+	testObj[txt] //X testObj.txt 이건 안됨 변수로 접근해야함
+	var obj3={0:"a","1":"b",2:"c"}
+	var obj3={0:"a","1":"b",2:"c"}
+	obj3[2] // 또는 obj["2"]     obj.2 이건 안됨
+	
+	var myObj = {"name":"hongildong", age:30, "addr":"광주"};
+	//자바스크립트 객체구조
+	var convertDB=[{name:{familyName:"마",subName:"틸다"}, age:21, addr:"광주"},
+		{name:{familyName:"조",subName:"민기"}, age:25, addr:"서울"},
+		{name:{familyName:"이",subName:"승우"}, age:22, addr:"순창"}];
+	JSON.stringify(convertDB); //json데이터형식
+
+	//XML형식
+	var xmlData = 
+	"<구성원>"+
+		"<구성>"+
+			"<성명><성>마</성> <이름>틸다</이름> </성명>"+
+			"<나이>21</나이>"+
+			"<주소>광주</주소>"+
+		"</구성>"+
+		"<구성><성명><성>조</성> <이름>민기</이름> </성명><나이>25</나이>"+
+			"<주소>서울</주소></구성>"+
+		"<구성><성명><성>이</성> <이름>승우</이름> </성명>"+
+		"<나이>22</나이><주소>순창</주소></구성>"	+
+	"</구성원>";	
+console.log(convertDB);
+console.log(xmlData);
+for(var i=0; i<convertDB.length; i++){
+	var obj = convertDB[i];
+	var keys = Object.keys(obj); //키 배열 리턴
+	for(var j=0; j<keys.length;j++){//키별 순회 순환문
+		var keys_sub = Object.keys(obj[keys[j]]);
+	for(var k=0; k<keys_sub.length; k++){
+		document.write(keys_sub[k]+":"+
+				obj[keys[j]] [keys_sub[k]]);
+		}
+	}	
+}
+document.write("<br>");
+for(var i=0; i<convertDB.length; i++){
+	for(var key in convertDB[i]){
+		for(var key2 in convertDB[i][key]){
+			document.write(key2+":" + convertDB[i][key][key2]);
+		}
+	}
+}
+
+
+
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
